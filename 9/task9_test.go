@@ -16,6 +16,16 @@ func TestUnpack_Success(t *testing.T) {
 	assert.NoError(t, err)
 }
 
+func TestUnpack_SuccessWithBigNumber(t *testing.T) {
+	str := "a11"
+	res, err := unpack(str)
+
+	expect := "aaaaaaaaaaa"
+
+	assert.Equal(t, expect, res)
+	assert.NoError(t, err)
+}
+
 func TestUnpack_SuccessWithEscape(t *testing.T) {
 	str := "a4b/53"
 	res, err := unpack(str)
