@@ -26,13 +26,12 @@ type Config struct {
 }
 
 type Downloader struct {
-	config     *Config
-	client     *http.Client
-	queue      chan *downloadTask
-	visited    *storage.URLStorage
-	wg         sync.WaitGroup
-	statsMutex sync.Mutex
-	robotsTxt  *RobotsTxt
+	config    *Config
+	client    *http.Client
+	queue     chan *downloadTask
+	visited   *storage.URLStorage
+	wg        sync.WaitGroup
+	robotsTxt *RobotsTxt
 }
 
 type downloadTask struct {
@@ -186,9 +185,7 @@ func (d *Downloader) urlToLocalPath(u *url.URL) string {
 		path += "index.html"
 	}
 
-	if strings.HasPrefix(path, "/") {
-		path = path[1:]
-	}
+	path = strings.TrimPrefix(path, "/")
 
 	if path == "" {
 		path = "index.html"

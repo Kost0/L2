@@ -162,7 +162,7 @@ func kill(args []string) error {
 }
 
 func ps(args []string) error {
-	args, redirect := parseRedirection(args)
+	_, redirect := parseRedirection(args)
 	cmd := exec.Command("ps")
 
 	cmd.Stdout = os.Stdout

@@ -38,6 +38,6 @@ func main() {
 
 	err = dl.Start()
 	if err != nil {
-		log.Fatal("Mirroring failed: %v", err)
+		log.Fatal("Mirroring failed:", err)
 	}
 }
